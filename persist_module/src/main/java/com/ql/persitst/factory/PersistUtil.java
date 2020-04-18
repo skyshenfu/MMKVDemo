@@ -190,6 +190,24 @@ public class PersistUtil {
         }
         return list;
     }
+
+
+    //是否包含某个字段的key
+    public boolean containsKey(String name){
+        return mmkv.containsKey(name);
+    }
+    //移除某个key及对应值
+    public void  removeValueForKey(String name){
+        mmkv.removeValueForKey(name);
+    }
+    //移除某个key及对应值
+    public void  removeKeyAndValue(String name){
+        mmkv.remove(name).apply();
+    }
+    //删除文件内内容
+    public void deleteFileContent(){
+        mmkv.clearAll();
+    }
     //实现了序列化的的java对象或list转成String
     private  String toJsonString(Object obj) {
         Gson gson = new Gson();
@@ -226,12 +244,12 @@ public class PersistUtil {
     public static void init(Application application,String pathName){
         MMKVLogLevel logLevel = BuildConfig.DEBUG ? MMKVLogLevel.LevelDebug : MMKVLogLevel.LevelError;
         if (TextUtils.isEmpty(pathName)){
-            MMKV.initialize(application.getFilesDir().getAbsolutePath()+"/"+PathConfig.DEFAULT_FILE_NAME,null,logLevel);
+            MMKV.initialize(application.getFilesDir().getAbsolutePath()+PathConfig.DEFAULT_FILE_NAME,null,logLevel);
         }else {
-            if (pathName.startsWith("/")){
-                pathName= pathName.replaceFirst("/","");
+            if (!pathName.startsWith("/")){
+                pathName=new StringBuilder().append("/").append(pathName).toString();
             }
-            MMKV.initialize(application.getFilesDir().getAbsolutePath()+"/"+pathName,null,logLevel);
+            MMKV.initialize(application.getFilesDir().getAbsolutePath()+pathName,null,logLevel);
 
         }
     }

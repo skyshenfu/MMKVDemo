@@ -53,5 +53,21 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("TAG", Thread.currentThread().getName()+"写完成");
             }
         });
+        PersistUtil.getInstance("Boss").deleteFileContent();
+        PersistUtil.getInstance("Boss").putString("ZERO","这里");
+        boolean result1=PersistUtil.getInstance("Boss").containsKey("ZERO");
+        PersistUtil.getInstance("Boss3").putString("ONE","一");
+        PersistUtil.getInstance("Boss3").putString("TWO","二");
+        PersistUtil.getInstance("Boss3").putString("THREE","三");
+
+        PersistUtil.getInstance("Boss3").removeValueForKey("ONE");
+        PersistUtil.getInstance("Boss3").removeKeyAndValue("THREE");
+
+        String one=PersistUtil.getInstance("Boss3").getString("ONE");
+        String two=PersistUtil.getInstance("Boss3").getString("TWO");
+        String three=PersistUtil.getInstance("Boss3").getString("THREE");
+        Log.e("TAG", "onCreate: ");
+
+
     }
 }
