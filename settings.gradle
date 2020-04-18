@@ -1,0 +1,3 @@
+rootProject.name='MkkvDemo'
+include ':app'
+include ':persist_module'
