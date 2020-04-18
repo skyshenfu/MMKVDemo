@@ -8,14 +8,14 @@ import com.ql.persitst.factory.PersistUtil;
 public class AsyReadStringRunnable extends BaseAsyRunnable {
 
     private String mResult;
-    public AsyReadStringRunnable(String name, AsyReadStringCallback mCallBack) {
-        super(name, mCallBack);
+    public AsyReadStringRunnable(String name,String fileName, AsyReadStringCallback mCallBack) {
+        super(name, fileName,mCallBack);
 
     }
 
     @Override
     protected void detailRun() {
-        mResult= PersistUtil.getInstance().getString(name);
+        mResult= PersistUtil.getInstance(fileName).getString(name);
 
     }
 

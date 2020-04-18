@@ -6,11 +6,13 @@ import android.os.Looper;
 import com.ql.persitst.callback.BaseAsyCallBack;
 
 public abstract class BaseAsyRunnable implements  Runnable{
+    protected   String fileName;
     protected  String name;
     protected BaseAsyCallBack mCallBack;
 
-    public BaseAsyRunnable(String name, BaseAsyCallBack mCallBack) {
+    public BaseAsyRunnable(String name,String fileName, BaseAsyCallBack mCallBack) {
         this.name = name;
+        this.fileName=fileName;
         this.mCallBack = mCallBack;
     }
 

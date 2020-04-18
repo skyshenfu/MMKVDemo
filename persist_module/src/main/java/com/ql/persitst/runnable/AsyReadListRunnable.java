@@ -12,13 +12,13 @@ public class AsyReadListRunnable<T> extends BaseAsyRunnable {
     private Class<?> clazz;
     private List<T> mResult;
 
-    public <T> AsyReadListRunnable(String name, Class<T> clazz, AsyReadListCallback asyReadListCallback) {
-        super(name,asyReadListCallback);
+    public <T> AsyReadListRunnable(String name, Class<T> clazz,String fileName, AsyReadListCallback asyReadListCallback) {
+        super(name,fileName,asyReadListCallback);
         this.clazz=clazz;
     }
     @Override
     protected void detailRun() {
-        mResult= (List<T>) PersistUtil.getInstance().getList(name,clazz);
+        mResult= (List<T>) PersistUtil.getInstance(fileName).getList(name,clazz);
     }
 
     @Override

@@ -40,6 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        PersistUtil.getInstance("Boss").putString("HP","特别多");
+        PersistUtil.getInstance("Boss2").putAsyObject("ZTY", list, new AsyWriteCallback() {
+            @Override
+            public void writeFinished() {
+                Log.e("TAG", Thread.currentThread().getName()+"写完成");
+            }
+        });
+        PersistUtil.getInstance("").putAsyObject("ZTY1", list.get(0), new AsyWriteCallback() {
+            @Override
+            public void writeFinished() {
+                Log.e("TAG", Thread.currentThread().getName()+"写完成");
+            }
+        });
     }
 }

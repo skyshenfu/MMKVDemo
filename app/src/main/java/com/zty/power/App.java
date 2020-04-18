@@ -2,12 +2,12 @@ package com.zty.power;
 
 import android.app.Application;
 
-import com.tencent.mmkv.MMKV;
+import com.ql.persitst.factory.PersistUtil;
 
 public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MMKV.initialize(this);
+        PersistUtil.init(this,"hero");
     }
 }
